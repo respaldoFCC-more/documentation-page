@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html lang"en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>El Lenguaje C</title>
+    <link rel="stylesheet" href="styles.css">
+    </head>
+    <body>
+        <nav id="navbar">
+          <header>El Lenguaje C</header>
+          <ul>
+            <li><a class="nav-link" href="#Inicio_de_C++">Inicio de C++</a></li>
+            <li><a class="nav-link" href="#Tipos_de_Datos">Tipos de Datos</a></li>
+            <li><a class="nav-link" href="#Concepto_de_Clase">Concepto de Clase</a></li>
+            <li><a class="nav-link" href="#Bibliotecas_de_Entrada_y_Salida">Bibliotecas de Entrada y Salida</a></li>
+            <li><a class="nav-link" href="#Entornos_de_Desarrollo">Entornos de Desarrollo</a></li>
+            <li><a class="nav-link" href="#Referencias">Referencias</a></li>
+            </ul>
+          </nav>
+          <main id="main-doc">
+            <section class="main-section" id="Inicio_de_C++">
+              <header>Inicio de C++</header>
+              <p>C++ es un lenguaje de programación diseñado en 1979 por Bjarne Stroustrup. La intención de su creación fue extender al lenguaje de programación C y añadir mecanismos que permiten la manipulación de objetos. En ese sentido, desde el punto de vista de los lenguajes orientados a objetos, C++ es un lenguaje híbrido.</p>
+            
+<p>Posteriormente se añadieron facilidades de programación genérica, que se sumaron a los paradigmas de programación estructurada y programación orientada a objetos. Por esto se suele decir que el C++ es un lenguaje de programación multiparadigma.</p>
+
+<ul>
+
+<li>Actualmente existe un estándar, denominado ISO C++, al que se han adherido la mayoría de los fabricantes de compiladores más modernos. Existen también algunos intérpretes, tales como ROOT.
+
+El nombre "C++" fue propuesto por Rick Mascitti en el año 1983, cuando el lenguaje fue utilizado por primera vez fuera de un laboratorio científico. Antes se había usado el nombre "C con clases". En C++, la expresión "C++" significa "incremento de C" y se refiere a que C++ es una extensión de C.</li>
+
+<li><code>Caracteristicas</code>
+<p>Su sintaxis es heredada del lenguaje C.
+Programa orientado a objetos (POO).
+Permite la agrupación de instrucciones.
+Es portátil y tiene un gran número de compiladores en diferentes plataformas y sistemas operativos.
+Permite la separación de un programa en módulos que admiten compilación independiente.
+Es un lenguaje de alto nivel.</p></li>
+
+<li> <code>Ejemplos</code>
+<p>A continuación se cita un programa de ejemplo Hola mundo escrito en C++:
+
+/* Esta cabecera permite usar los objetos que encapsulan los descriptores stdout
+y stdin: cout(<<) y cin(>>)*/
+
+#include <iostream>
+
+using namespace std;
+
+int main()
+{
+    cout << "Hola mundo" << endl;
+    return 0;
+} </p></li>
+
+<li> Al usar la directiva #include se le dice al compilador que busque e interprete todos los elementos definidos en el archivo que acompaña la directiva (en este caso, iostream). Para evitar sobrescribir los elementos ya definidos al ponerles igual nombre, se crearon los espacios de nombres o namespace del singular en inglés. En este caso hay un espacio de nombres llamado std, que es donde se incluyen las definiciones de todas las funciones y clases que conforman la biblioteca estándar de C++. Al incluir la sentencia using namespace std le estamos diciendo al compilador que usaremos el espacio de nombres std por lo que no tendremos que incluirlo cuando usemos elementos de este espacio de nombres, como pueden ser los objetos cout y cin, que representan el flujo de salida estándar (típicamente la pantalla o una ventana de texto) y el flujo de entrada estándar (típicamente el teclado).</li>
+
+<li>La definición de funciones es igual que en C, salvo por la característica de que si main no va a recoger argumentos, no tenemos por qué ponérselos, a diferencia de C, donde había que ponerlos explícitamente, aunque no se fueran a usar. Queda solo comentar que el símbolo << se conoce como operador de inserción, y grosso modo está enviando a cout lo que queremos mostrar por pantalla para que lo pinte, en este caso la cadena "Hola mundo". El mismo operador << se puede usar varias veces en la misma sentencia, de forma que gracias a esta característica podremos concatenar el objeto endl al final, cuyo resultado será imprimir un retorno de línea.</li>
+</ul>
+              </section>
+              <section class="main-section" id="Tipos_de_Datos">
+              <header>Tipos de Datos</header>
+              <p>Según la máquina y el compilador que se utilice los tipos primitivos pueden ocupar un determinado tamaño en memoria. La siguiente lista ilustra el número de bits que ocupan los distintos tipos primitivos en la arquitectura x86.
+
+Tamaños de tipos primitivos bajo i386 (GCC)
+Tipo	Número de bits
+char	8
+short	16
+int	32
+float	32
+double	64
+Otras arquitecturas pueden requerir distintos tamaños de tipos de datos primitivos. C++ no dice nada acerca de cuál es el número de bits en un byte, ni del tamaño de estos tipos; más bien, ofrece solamente las siguientes "garantías de tipos":
+
+De acuerdo al estándar C99, un tipo char debe ocupar exactamente un byte compuesto de un mínimo de 8 bits independientemente de la arquitectura de la máquina.
+El tamaño reconocido de char es de 1. Es decir, sizeof(char) siempre devuelve 1.
+Un tipo short tiene al menos el mismo tamaño que un tipo char.
+Un tipo long tiene al menos el doble tamaño en bytes que un tipo short.
+Un tipo int tiene un tamaño entre el de short y el de long, ambos incluidos, preferentemente el tamaño de un apuntador de memoria de la máquina. Su valor máximo es 2147483647, usando 32 bits.
+Un tipo unsigned tiene el mismo tamaño que su versión signed.</p>
+<code>Wchar_t</code>
+<p>Para la versión del estándar que se publicó en 1998, se decidió añadir el tipo de dato wchar_t, que permite el uso de caracteres UNICODE, a diferencia del tradicional char, que contempla simplemente al código de caracteres ASCII extendido. A su vez, se ha definido para la mayoría de las funciones y clases, tanto de C como de C++, una versión para trabajar con wchar_t, donde usualmente se prefija el carácter w al nombre de la función (en ocasiones el carácter es un infijo). Por ejemplo:
+
+strcpy - wstrcpy
+std::string - std::wstring
+std::cout - std::wcout
+Cabe resaltar que en C se define wchar_t como:
+
+typedef unsigned short wchar_t;
+Mientras que en C++ es en sí mismo un tipo de dato.<p>
+  <code>La palabra reservada "void"</code>
+  <p>La palabra reservada void define en C++ el concepto de no existencia o no atribución de un tipo en una variable o declaración. Es decir, una función declarada como void no devolverá ningún valor. Esta palabra reservada también puede usarse para indicar que una función no recibe parámetros, como en la siguiente declaración:
+
+int funcion (void);
+Aunque la tendencia actual es la de no colocar la palabra "void".
+
+Además se utiliza para determinar que una función no retorna un valor, como en:
+
+void funcion (int parametro);
+Cabe destacar que void no es un tipo. Una función como la declarada anteriormente no puede retornar un valor por medio de return: la palabra clave va sola. No es posible una declaración del tipo:
+
+void t; //Está mal
+En este sentido, void se comporta de forma ligeramente diferente a como lo hace en C, especialmente en cuanto a su significado en declaraciones y prototipos de funciones.
+
+Sin embargo, la forma especial void * indica que el tipo de datos es un puntero. Por ejemplo:
+
+void *memoria;
+Indica que memoria es un puntero a alguna parte, donde se guarda información de algún tipo. El programador es responsable de definir estos "algún", eliminando toda ambigüedad. Una ventaja de la declaración "void *" es que puede representar a la vez varios tipos de datos, dependiendo de la operación de cast escogida. La memoria que hemos apuntado en alguna parte, en el ejemplo anterior, bien podría almacenar un entero, un flotante, una cadena de texto o un programa, o combinaciones de estos. Es responsabilidad del programador recordar qué tipo de datos hay y garantizar el acceso adecuado.</p>
+<code>La palabra "Null"</code>
+<p>Además de los valores que pueden tomar los tipos anteriormente mencionados, existe un valor llamado NULL, sea el caso numérico para los enteros, carácter para el tipo char, cadena de texto para el tipo string, etc. El valor NULL, expresa, por lo regular, la representación de una Macro, asignada al valor "0".
+
+Tenemos entonces que:
+
+void* puntero = NULL;
+int entero = NULL;
+bool boleana = NULL;
+char caracter = NULL;
+El valor de las variables anteriores nos daría 0. A diferencia de la variable "caracter", que nos daría el equivalente a NULL, '\0', para caracteres.
+
+Para evitar ambigüedad en funciones sobrecargadas, puede emplearse la palabra clave nullptr. Esta palabra clave siempre representa un puntero. Por ejemplo:
+
+void f(int a);
+void f(foo *a);
+
+int main(int argc, char** argv) {
+        f(NULL); // Se ejecuta f(int a)
+        f(nullptr); // Se ejecuta f(foo *a)
+        return 0;
+}</p>
+<code>Principios</code>
+<p>Todo programa en C++ debe tener la función principal main() (a no ser que se especifique en tiempo de compilación otro punto de entrada, que en realidad es la función que tiene el main())
+
+int main()
+{}
+La función principal del código fuente main debe tener uno de los siguientes prototipos:
+int main()
+int main(int argc, char** argv)
+Aunque no es estándar algunas implementaciones permiten
+int main(int argc, char** argv, char** env)
+La primera es la forma por omisión de un programa que no recibe parámetros ni argumentos. La segunda forma tiene dos parámetros: argc, un número que describe el número de argumentos del programa (incluyendo el nombre del programa mismo), y argv, un puntero a un array de punteros, de argc elementos, donde el elemento argv[i] representa el i-ésimo argumento entregado al programa. En el tercer caso se añade la posibilidad de poder acceder a las variables de entorno de ejecución de la misma forma que se accede a los argumentos del programa, pero reflejados sobre la variable env.
+
+El tipo de retorno de main es un valor entero int. Al finalizar la función main, debe incluirse el valor de retorno (por ejemplo, return 0;, aunque el estándar prevé solamente dos posibles valores de retorno: EXIT_SUCCESS y EXIT_FAILURE, definidas en el archivo cstdlib), o salir por medio de la función exit. Alternativamente puede dejarse en blanco, en cuyo caso el compilador es responsable de agregar la salida adecuada.</p>
+              </section>
+              <section class="main-section" id="Concepto_de_Clase">
+              <header>Concepto de Clase</header>
+              </section>
+              <p>Los objetos en C++ son abstraídos mediante una clase. Según el paradigma de la programación orientada a objetos un objeto consta de:
+
+Identidad, que lo diferencia de otros objetos (Nombre que llevará la clase a la que pertenece dicho objeto).
+Métodos o funciones miembro.
+Atributos o variables miembro.
+Un ejemplo de clase que podemos tomar es la clase perro. Cada perro comparte unas características (atributos). Su número de patas, el color de su pelaje o su tamaño son algunos de sus atributos. Las funciones que lo hagan ladrar, cambiar su comportamiento... esas son las funciones de la clase.
+
+Este es otro ejemplo de una clase:
+
+class Punto
+{
+//por omisión, los miembros son 'private' para que solo se puedan modificar desde la propia clase.
+private:
+        // Variable miembro privada
+        int id;
+protected:
+        // Variables miembro protegidas
+        int x;
+        int y;
+public:
+        // Constructor
+        Punto();
+        // Destructor
+        ~Punto();
+        // Funciones miembro o métodos
+        int ObtenerX();
+        int ObtenerY();
+};</p>
+<code>Destructores</code>
+<p>Los destructores son funciones miembro especiales llamadas automáticamente en la ejecución del programa, y por tanto no tienen por qué ser llamadas explícitamente por el programador. Sus principales cometidos son:
+
+Liberar los recursos computacionales que el objeto de dicha clase haya adquirido en tiempo de ejecución al expirar este.
+Quitar los vínculos que pudiesen tener otros recursos u objetos con este.
+Los destructores son invocados automáticamente al alcanzar el flujo del programa el fin del ámbito en el que está declarado el objeto. El único caso en el que se debe invocar explícitamente al destructor de un objeto es cuando este fue creado mediante el operador new, es decir, que este vive en memoria heap, y no en la pila de ejecución del programa. La invocación del destructor de un objeto que vive en heap se realiza a través del operador delete o delete[] para arrays. Ejemplo:
+
+int main() {
+  int *unEntero = new int(12);         //asignamos un entero en memoria heap con el valor 12
+  int *arrayDeEnteros = new int[25]; //asignamos memoria para 25 enteros(no están inicializados)
+  delete unEntero;                     //liberamos la memoria que ocupaba unEntero
+  delete[] arrayDeEnteros;           //liberamos la memoria ocupada por arrayDeEnteros
+  return 0;
+}
+Si no se utilizara el operador delete y delete[] en ese caso, la memoria ocupada por unEntero y arrayDeEnteros respectivamente, quedaría ocupada sin sentido. Cuando una porción de memoria queda ocupada por una variable que ya no se utiliza, y no hay forma de acceder a ella, se denomina un 'memory leak'. En aplicaciones grandes, si ocurren muchos memory leaks, el programa puede terminar ocupando bastante más memoria RAM de la que debería, lo que no es para nada conveniente. Es por esto, que el manejo de memoria heap debe usarse conscientemente.
+
+Existen dos tipos de destructores pueden ser públicos o privados, según si se declaran:
+
+Si es público se llama desde cualquier parte del programa para destruir el objeto.
+Si es privado no se permite la destrucción del objeto por el usuario.
+El uso de destructores es clave en el concepto de Adquirir Recursos es Inicializar.</p>
+<code>Funciones Miembro</code>
+<p>Función miembro es aquella que está declarada en ámbito de clase. Son similares a las funciones habituales, con la salvedad de que el compilador realizara el proceso de Decoración de nombre (Name Mangling en inglés): Cambiará el nombre de la función añadiendo un identificador de la clase en la que está declarada, pudiendo incluir caracteres especiales o identificadores numéricos. Este proceso es invisible al programador. Además, las funciones miembro reciben implícitamente un parámetro adicional: El puntero this, que referencia al objeto que ejecuta la función.
+
+Las funciones miembro se invocan accediendo primero al objeto al cual refieren, con la sintaxis: myobject.mymemberfunction(), esto es un claro ejemplo de una función miembro.
+
+Caso especial es el de las funciones miembro estáticas. A pesar de que son declaradas dentro de la clase, con el uso de la palabra clave static no recibirán el puntero this. Gracias a esto no es necesario crear ninguna instancia de la clase para llamar a esta función, sin embargo, solo se podrá acceder a los miembros estáticos de la clase dado que estos no están asociados al objeto sino al tipo. La sintaxis para llamar a esta función estática es mytype::mystaticmember().</p>
+              <section class="main-section" id="Bibliotecas_de_Entrada_y_Salida">
+              <header>Bibliotecas de Entrada y Salida</header>
+              <p>Las clases basic_ostream y basic_stream, y los objetos cout y cin, proporcionan la entrada y salida estándar de datos (teclado/pantalla). También está disponible cerr, similar a cout, usado para la salida estándar de errores. Estas clases tienen sobrecargados los operadores << y >>, respectivamente, con el objeto de ser útiles en la inserción/extracción de datos a dichos flujos. Son operadores inteligentes, ya que son capaces de adaptarse al tipo de datos que reciben, aunque tendremos que definir el comportamiento de dicha entrada/salida para clases/tipos de datos definidos por el usuario. Por ejemplo:
+
+ostream& operator<<(ostream& fs, const Punto& punto)
+{
+  return fs << punto.x << "," << punto.y;
+}
+De esta forma, para mostrar un punto, solo habría que realizar la siguiente expresión:
+
+//...
+Punto p(4,5);
+//...
+cout << "Las coordenadas son: " << p << endl;
+//...
+Es posible formatear la entrada/salida, indicando el número de dígitos decimales a mostrar, si los textos se pasarán a minúsculas o mayúsculas, si los números recibidos están en formato octal o hexadecimal, etc.</p>
+<code>F streams</code>
+<p>Tipo de flujo para el manejo de ficheros. La definición previa de ostreams/istreams es aplicable a este apartado. Existen tres clases (ficheros de lectura, de escritura o de lectura/escritura): ifstream,ofstream y fstream.
+
+Como abrir un fichero: (nombre_variable_fichero).open("nombre_fichero.dat/txt", ios::in); para abrirlo en modo lectura. (nombrevariablefichero).open("nombre_fichero.dat/txt", ios::out); para abrirlo en modo escritura.
+
+Ejemplo: f.open("datos.txt", ios::in);
+
+Como cerrar el fichero: nombre_variable_fichero.close();
+
+Ejemplo: f.close();
+
+Leer un fichero:
+
+1-Si es fichero de texto plano:
+   #include <fstream>
+   #include <string>
+   #include <iostream>
+
+   using namespace std;
+
+   int main() {
+     ifstream entrada;
+     entrada.open("textoPlano.txt");
+     string unString;
+     while(entrada >> unString)
+        cout << "Lei: " << unString << endl;
+     return 0;
+   }
+2-Si es un fichero binario(.dat);
+  nombre_variable_fichero.read((char*)&nombre_variable, sizeof(tipo_variable));
+Ejemplo:
+f.read((char*)&e, sizeof(int));
+Escribir un fichero:
+
+1-Si es fichero de texto(.txt):
+  nombrevariable<<"texto"; donde "texto" puede ser también una variable de cualquier tipo primitivo, o un string.
+  Ejemplo: f<<HOLA>;
+2-Si es un fichero binario(.dat);
+  nombre_variable_fichero.write((char*)&nombre_variable, sizeof(tipo_variable));
+Ejemplo:
+f.write((char*)&e, sizeof(int));
+Pueden abrirse pasando al constructor los parámetros relativos a la ubicación del fichero y el modo de apertura:></p>
+<code>Sstreams</code>
+<p>Se destacan dos clases, ostringstream e istringstream. Todo lo anteriormente dicho es aplicable a estas clases. Tratan a una cadena como si de un flujo de datos se tratase. ostringstream permite elaborar una cadena de texto insertando datos cual flujo, e istringstream puede extraer la información contenida en una cadena (pasada como parámetro en su constructor) con el operador >>. Ejemplos:
+
+ostringstream s;
+s << nombre << "," << edad << "," << estatura << "," << punto(5,6) << endl;
+cout << s.str();
+istringstream s(cadena);
+s >> nombre >> edad >> estatura >> p;</p>
+              </section>
+              <section class="main-section" id="Entornos_de_Desarrollo">
+              <header>Entornos de Desarrollo</header>
+              <p>Bajo Microsoft Windows
+Visual Studio Code
+Code::Blocks
+Dev-C++
+Visual C++
+wxDev-C++
+Zinjai
+Open Watcom (IDE y Dialog Editor)
+CodeLite
+Bajo MacOS
+Xcode
+Zinjai
+CodeLite
+Geany
+Bajo DOS
+Turbo C, reemplazado por C++Builder
+Bajo GNU/Linux
+Code::Blocks
+NetBeans
+Eclipse
+Geany
+Emacs
+Zinjai
+Kdevelop
+Open Watcom (IDE y Dialog Editor)
+CodeLite
+Clion (software)</p>
+<code>Softwares creados y programados con C++</code>
+<p>Microsoft Edge
+Google Chrome
+Bitcoin
+μTorrent
+BitTorrent (programa)
+Haiku (sistema operativo)
+Windows Phone 8.1
+Open Broadcaster Software
+Opera (navegador)
+CATIA</p>
+<code>Criticas</code>
+<p>A pesar de su adopción generalizada, muchos programadores han criticado el lenguaje C ++, incluyendo Linus Torvalds,4​ Richard Stallman,5​ y Ken Thompson.6​ Los problemas incluyen una falta de reflexión o recolector de basura, tiempos de compilación lentos, perceived feature creep,7​ y mensajes de error detallados, particularmente de la metaprogramación de plantilla.8​
+
+Para evitar los problemas que existen en C ++, y para aumentar la productividad,9​ algunas personas sugieren lenguajes alternativos más recientes que C ++, como D, Go, Rust y Vala.10​</p>
+              </section>
+              <section class="main-section" id="Referencias">
+              <header>Referencias</header>
+              <p>https://www.iso.org/standard/68564.html
+ Stroustrup, Bjarne (1997). «1». The C++ Programming Language (Third edición). ISBN 0201889544. OCLC 59193992. Consultado el 25 de febrero de 2010.
+ http://herbsutter.com/2011/08/12/we-have-an-international-standard-c0x-is-unanimously-approved/
+ «Re: [RFC Convert builin-mailinfo.c to use The Better String Library]», 6 de septiembre de 2007, consultado el 31 de marzo de 2015.
+ «Re: Efforts to attract more users?», 12 de julio de 2010, consultado el 31 de marzo de 2015.
+ Andrew Binstock (18 de mayo de 2011). «Dr. Dobb's: Interview with Ken Thompson». Archivado desde el original el 13 de marzo de 2014. Consultado el 7 de febrero de 2014.
+ Pike, Rob (2012). «Less is exponentially more».
+ Kreinin, Yossi (13 de octubre de 2009). «Defective C++». Consultado el 3 de febrero de 2016.
+ New Languages, and Why We Need Them, MIT Technology Review
+ The New Native Languages | Dr Dobb's</p>
+ <code>Bibliografia<code>
+   <p>Bjarne Stroustrup, El lenguaje de programación C++, Addison Wesley, Madrid, 1998, ISBN 84-7829-019-2
+Bjarne Stroustrup, The C++ Programming Language, Addison-Wesley Pub Co; Tercera edición (15 de febrero de 2000); ISBN 0-201-70073-5
+Bjarne Stroustrup, The Design and Evolution of C++, Addison-Wesley Pub Cp; Primera edición (29 de marzo de 1994); ISBN 0-201-54330-3
+Margaret A. Ellis y Bjarne Stroustrup, The Annotated C++ Reference Manual, Addison-Wesley Pub Co; (1 de enero de 1990); ISBN 0-201-51459-1</p>
+<code>Enlaces Externos</code>
+<p> Wikimedia Commons alberga una categoría multimedia sobre C++.
+«Cplusplus resources» (en inglés). Consultado el 10 de abril de 2015.
+«C/C++ Reference=C Programming and C++ Programming» (en inglés). Consultado el 10 de abril de 2015.
+«TecnoMate.xyz=Curso de Programación C++». Consultado el 1 de septiembre de 2019.</p>
+              </section>
+        </main>
+      </body>
+  </html>
